@@ -4,7 +4,14 @@ provider "aws" {
   region = "us-east-1"
 }
 
+# AMI
+
+variable "ami_id" {
+  type = "string"
+  default = "ami-b374d5a5"
+}
+
 resource "aws_instance" "web" {
-  ami = "ami-b374d5a5"
+  ami = "${var.ami_id}"
   instance_type = "t2.micro"
 }
